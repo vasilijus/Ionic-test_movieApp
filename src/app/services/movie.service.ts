@@ -33,6 +33,7 @@ export class MovieService {
   * @returns Observable with the search results
   */
   searchData(title: string, type: SearchType): Observable<any> {
+    console.log(`${this.url}?s=${encodeURI(title)}&type=${type}&apikey=${this.apiKey}`);
     return this.http.get(`${this.url}?s=${encodeURI(title)}&type=${type}&apikey=${this.apiKey}`).pipe(
       map(results => results['Search'])
     );
@@ -45,6 +46,7 @@ export class MovieService {
   * @returns Observable with detailed information
   */
   getDetails(id) {
+    console.log(`${this.url}?i=${id}&plot=full&apikey=${this.apiKey}`);
     return this.http.get(`${this.url}?i=${id}&plot=full&apikey=${this.apiKey}`);
   }
 }
